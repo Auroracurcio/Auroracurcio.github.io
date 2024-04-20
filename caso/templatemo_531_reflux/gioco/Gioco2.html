@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="it">
+	<head>
+		<title>La Torre di Hanoi</title>
+		<link rel="icon" type="image/png" href="im1.jpg"/>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.3.3/howler.min.js"></script>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+			  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+			  crossorigin="anonymous">
+		<link rel="stylesheet" href="file.css"/>
+	</head>
+
+	<body>
+	<header>
+		<h1>niente</h1>
+		<h1>Livello avanzato</h1>
+	</header>
+	<main>
+		<nav class="navbar bg-body-tertiary fixed-top">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">La torre di Hanoi</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+						aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+					 aria-labelledby="offcanvasNavbarLabel">
+					<div class="offcanvas-header">
+						<h5 class="offcanvas-title" id="offcanvasNavbarLabel">Barra</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+					</div>
+					<div class="offcanvas-body">
+						<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+							<li class="nav-item">
+								<a class="nav-link active" aria-current="page" href="Home.html">Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" aria-current="page" href="informazioni.html">Torna alle info! </a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<!-- Corpo -->
+		<div class="container">
+			<center>
+				<div style = "padding:3%;" class="row">
+					<div id="pole1" class="col-4">
+					</div>
+					<div id="pole2" class="col-4">
+					</div>
+					<div id="pole3" class="col-4">
+					</div>
+				</div>
+			</center>
+			<div class="row" style="margin-top:20px;">
+				<div class="col-4">
+					<center><button id="btn1" class="btn btn-primary" onclick="actionPole(1)">Prendi</button></center>
+				</div>
+				<div class="col-4">
+					<center><button id="btn2" class="btn btn-primary" onclick="actionPole(2)">Prendi</button></center>
+				</div>
+				<div class="col-4">
+					<center><button id="btn3" class="btn btn-primary" onclick="actionPole(3)">Prendi</button></center>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-4"></div>
+				<div id="myHand" class="col-4"></div>
+				<div class="col-4"></div>
+			</div>
+			<!--contatore-->
+			<div class="row mt-4">
+				<div class="col-12 text-center">
+					<p>Mossa -->   <span id="clicks"> 0 </span></p>
+				</div>
+			</div>
+			<!-- Timer -->
+			<div class="row mt-2">
+				<div class="col-12 text-center">
+					<p>Tempo trascorso: <span id="timer">0</span> secondi</p>
+				</div>
+			</div>
+			<div class="row mt-2">
+				<div class="col-12 text-center">
+					<button type="button" class="btn btn-outline-warning" onclick="resetGame()">RESETTA</button>
+				</div>
+			</div>
+		</div>
+	</main>
+	<audio id="sound">
+		<source src="./gioco.mp3" type="audio/mp3">
+		Il tuo browser non supporta l'elemento audio.
+	</audio>
+	</body>
+	<footer>
+		<!-- Pedice -->
+		<center>
+			<p>&copy; Aurora Curcio &#129321;</p>
+		</center>
+	</footer>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+			crossorigin="anonymous">
+	</script>
+
+	<script>
+		var pole1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+		var pole2 = [];
+		var pole3 = [];
+		var pole4 = [];
+		var pole5 = [];
+		var pole6 = [];
+		var pole7 = [];
+		var pole8 = [];
+		var pole9 = [];
+		var pole10 = [];
+		var mano = 0;
+		var clicks = 0;
+		var timer = 0;
+		var timerInterval;
+
+		drawScene();
+		startTimer();
+
+		function startTimer() {
+			timerInterval = setInterval(function () {
+				timer++;
+				document.getElementById("timer").innerText = timer;
+			}, 1000);
+		}
+
+		function incrementClicks() {
+			clicks++;
+			document.getElementById("clicks").innerHTML = clicks;
+		}
+
+		function resetGame() {
+			// Resetta le variabili di stato del gioco
+			var pole1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+			var pole2 = [];
+			var pole3 = [];
+			var pole4 = [];
+			var pole5 = [];
+			var pole6 = [];
+			var pole7 = [];
+			var pole8 = [];
+			var pole9 = [];
+			var pole10 = [];
+			var mano = 0;
+			var clicks = 0;
+			var timer = 0;
+			var timerInterval;
+
+			// Resetta gli elementi visualizzati
+			document.getElementById("timer").innerText = timer;
+			document.getElementById("clicks").innerText = clicks;
+
+			// Avvia di nuovo il gioco
+			drawScene();
+			startTimer();
+		}
+
+		function checkVictory() {
+			if (pole3.length === 4) {
+				clearInterval(timerInterval);
+				alert("Hai vinto! Vai al prossimo livello");
+				resetGame();
+			}
+		}
+
+		function drawScene() {
+			drawPoles();
+			drawHand();
+			checkButtons();
+		}
+
+		function drawPoles() {
+			for (let i = 1; i < 4; i++) {
+				drawPole(getPole(i), getDivPole(i));
+			}
+		}
+
+		function getDivPole(n) {
+			return document.getElementById("pole" + n);
+		}
+
+		function drawPole(pole, div) {
+			div.innerHTML = "";
+			for (let i = 0; i < pole.length; i++) {
+				div.innerHTML += drawDisk(pole[i]);
+			}
+		}
+
+		function checkButtons() {
+			for (let i = 1; i < 4; i++)
+				checkButton(i);
+		}
+
+		function getPole(n) {
+			switch (n) {
+				case 1:
+					return pole1;
+				case 2:
+					return pole2;
+				case 3:
+					return pole3;
+				case 4:
+					return pole3;
+				case 5:
+					return pole3;
+				case 6:
+					return pole3;
+				case 7:
+					return pole3;
+				case 8:
+					return pole3;
+				case 9:
+					return pole3;
+				case 10:
+					return pole3;
+			}
+		}
+
+		function checkButton(n) {
+			let button = document.getElementById("btn" + n);
+			let pole = getPole(n);
+			if (mano === 0) {
+				button.innerText = "Prendi";
+				button.disabled = pole.length === 0;
+			} else {
+				button.innerText = "Metti";
+				button.disabled = pole.length > 0 ? pole[0] < mano : false;
+			}
+		}
+
+		function drawHand() {
+			let handDiv = document.getElementById("myHand");
+			handDiv.innerHTML = drawDisk(mano);
+		}
+
+		function actionPole(n) {
+			if (mano === 0) {
+				mano = getPole(n).shift();
+				incrementClicks();
+			} else {
+				getPole(n).unshift(mano);
+				mano = 0;
+				checkVictory(); // Aggiunto controllo vittoria
+			}
+			drawScene();
+			playSound();
+		}
+
+		function getColor(dimension) {
+			let color = "#FF0000";
+			switch (dimension) {
+				case 1:
+					color = "#cff0ec";
+					break;
+				case 2:
+					color = "#d9e8e6";
+					break;
+				case 3:
+					color = "#e2e1e1";
+					break;
+				case 4:
+					color = "#ffe9f4";
+					break;
+				case 5:
+					color = "#ffdbe6";
+					break;
+				case 6:
+					color = "#f8c8d0";
+					break;
+				case 7:
+					color = "#ffc0cb";
+					break;
+				case 8:
+					color = "#f1b3be";
+					break;
+				case 9:
+					color = "#e3a5b0";
+					break;
+				case 10:
+					color = "#d598a3";
+					break;
+			}
+			return color;
+		}
+
+		function drawDisk(dimension) {
+			let color = getColor(dimension);
+			return '<div class="disk" style="background-color:' + color + '; width:' + dimension * 10 + '%;"></div>';
+		}
+	</script>
+</html>

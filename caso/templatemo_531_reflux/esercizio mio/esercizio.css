@@ -1,0 +1,29 @@
+table {
+  border:1px solid black;
+}
+
+.tabellaPersonaggi {
+	border:1px solid black; 
+	text-align:center;
+}
+
+.caroselloTigro {
+	width:30%;
+	height:30%; 
+}
+
+.caroselloPimpi {
+	width:30%;
+	height:30%; 
+}
+
+.caroselloIH_OH {
+	width:30%;
+	height:30%; 
+}
+
+.caroselloRO{
+	width:30%;
+	height:30%; 
+}
+

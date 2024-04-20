@@ -1,0 +1,13 @@
+#btn{
+	width:200px;
+	height:70px; 
+	border-width:4px; 
+	border-radius:35px; 
+	font-size: 25px;
+	font-weight:bold;
+	volor: #f00; 
+	cursor:pointer;
+}
+#btn:active{
+	font-size: 23px;
+}
