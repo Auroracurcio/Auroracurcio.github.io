@@ -95,8 +95,14 @@
 								<div class="first-service-icon service-icon"></div>
 								<h4>HTML &amp; CSS</h4>
 								<p>
-									I studied HTML and CSS for a whole year. I specialized in creating Google sites.
-									I created personal sites, sites on some TV series.
+									HTML defines the structure and content of a web page, while CSS defines its visual appearance and
+									presentation style. Together, HTML and CSS allow web developers to create rich web pages
+									content and well designed,
+									offering a pleasant and consistent user experience.
+								</p>
+								<p>
+									I studied HTML and CSS for a whole year. I specialize in creating Google sites.
+									I created personal sites, sites about some TV series.
 									I created a game with different levels and victory message. I had fun doing it!
 								</p>
 							</div>
@@ -104,10 +110,30 @@
 						<div class="col-md-6">
 							<div class="service-item">
 								<div class="second-service-icon service-icon"></div>
-								<h4>Java </h4>
+								<h4>Java &amp; JavaScript</h4>
 								<p>
-								   JavaScript is a programming language widely used to make web pages interactive.I specialized in the Java language; in creating apps with and without graphics.
-									We studied the theory of Java and why it is different from all other programming languages.
+								I specialized in the Java language; in creating apps with and without graphics.
+								We studied the theory of Java and why it is different from all other programming languages.
+								Also because it is a versatile programming language used in a wide range of contexts.
+								</p>
+								<p>
+								I delved deeper into JavaScript is a programming language widely used to make web pages interactive.
+								It's completely different from Java, they have the same name! But they deceive. It is mainly used for
+								Web development and to add interactivity to HTML pages.
+								</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="service-item">
+								<div class="fourth-service-icon service-icon"></div>
+								<h4>C &amp; C++</h4>
+								<p>
+								In C, code is organized into functions that operate on data and is a developed high-level programming language.
+								</p>
+								<p>
+								C++ offers many features, such as inheritance, polymorphism, templates and automatic management
+								memory through constructors and destructors.
+								These features make C++ more powerful and flexible in certain contexts, but they can also add complexity to the language.
 								</p>
 							</div>
 						</div>
@@ -115,23 +141,15 @@
 							<div class="service-item">
 								<div class="third-service-icon service-icon"></div>
 								<h4>Stampa 3D</h4>
-								<p>
-									I took courses on 3D printing. On the characteristics of 3D printers, which one is the most convenient (depends on our project),
+								<p>3D printing is an innovative technology that is transforming the way objects are designed and produced,
+									offering significant advantages in terms of customization.
+								</p>
+								<p>I took courses on 3D printing. On the characteristics of 3D printers, which is the most convenient (depends on our project),
 									or the most resistant one.
-									I printed several things, several models; and also made some items on reservation.
+									I printed several things, several models; and I have also created some articles on reservation.
 								</p>
 							</div>
 						</div>
-							<div class="col-md-6">
-								<div class="service-item">
-									<div class="fourth-service-icon service-icon"></div>
-									<h4>JavaScript</h4>
-									<p>
-									JavaScript is a programming language widely used to make web pages interactive.
-									I have also created sites and games in JavaScript.
-									</p>
-								</div>
-							</div>
 					</div>
 				</div>
 			</section>
@@ -262,8 +280,12 @@
 					</div>
 				</div>
 			</section>
+
 		  <!-- Scripts -->
 		  <!-- Bootstrap core JavaScript -->
+		  <!--In breve, questo script assicura che il menu di navigazione rifletta 
+			sempre quale parte della pagina è attualmente visibile e fornisce uno scorrimento fluido 
+			quando si fa clic sui collegamenti della barra di navigazione.-->
 		<script src="vendor/jquery/jquery.min.js"></script>
 		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 		<script src="assets/js/isotope.min.js"></script>
@@ -271,9 +293,10 @@
 		<script src="assets/js/lightbox.js"></script>
 		<script src="assets/js/custom.js"></script>
 			<script>
-				//according to loftblog tut
+				//Seleziona il primo elemento <li>
 				$(".main-menu li:first").addClass("active");
 				
+				//serve per lo scorrimento della pagina, fino alla sua posizione specifica
 				var showSection = function showSection(section, isAnimate) {
 					var direction = section.replace(/#/, ""),
 						reqSection = $(".section").filter(
@@ -293,6 +316,7 @@
 				  }
 				};
 				
+				//trova i collegamenti nella barra di navigazione
 				var checkSection = function checkSection() {
 				  $(".section").each(function() {
 					var $this = $(this),
@@ -311,11 +335,14 @@
 				  });
 				};
 				
+				//attiva l'azione dei click, cioe attiva i collegamenti
 				$(".main-menu").on("click", "a", function(e) {
 				  e.preventDefault();
 				  showSection($(this).attr("href"), true);
 				});
 				
+				//per controllare quale sezione della pagina è 
+				//attualmente visibile e aggiorna il menu di navigazione di conseguenza.
 				$(window).scroll(function() {
 				  checkSection();
 				});
